@@ -1,0 +1,18 @@
+import os
+
+import uvicorn
+from dotenv import load_dotenv
+
+
+def ejecutar():
+    load_dotenv()
+
+    host = os.getenv("API_HOST", "127.0.0.1")
+    port = int(os.getenv("API_PORT", "8000"))
+    reload = os.getenv("API_RELOAD", "true").strip().lower() == "true"
+
+    uvicorn.run("api:app", host=host, port=port, reload=reload)
+
+
+if __name__ == "__main__":
+    ejecutar()
