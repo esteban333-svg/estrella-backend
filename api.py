@@ -29,3 +29,9 @@ def obtener_estado():
         "rojo": rojo,
         "dorado": dorado
     }
+@app.get("/dorado")
+def dorado_signal():
+    azul = calcular_azul()
+    rojo = calcular_rojo()
+    dorado = calcular_dorado(azul, rojo)
+    return {"dorado": dorado["dorado"], "score": dorado["score"], "razones": dorado["razones"]}
